@@ -10,20 +10,14 @@ package cn.edu.bjfu.leetcode.april;
 public class Day06 {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
         int[] nums = {1,2,3,4};
-        int[] runningSum = solution.runningSum(nums);
+        int[] runningSum = runningSum(nums);
         for (int i : runningSum) {
             System.out.println(i);
         }
     }
 
-
-}
-
-class Solution{
-
-    public int[] runningSum(int[] nums){
+    public static int[] runningSum(int[] nums){
         int n = nums.length;
 
         int[] runningSum = new int[n];
@@ -34,4 +28,5 @@ class Solution{
 
         return runningSum;
     }
+
 }
