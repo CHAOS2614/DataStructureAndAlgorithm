@@ -26,7 +26,9 @@ public class Day08 {
     }
 
     public int maximumWealth(int[][] accounts) {
-        //return Arrays.stream(accounts).mapToInt(account -> Arrays.stream(account).sum()).max().orElse(0);
+
+        // 在力扣上运行时间太长了是因为流的问题吗？
+        // return Arrays.stream(accounts).mapToInt(account -> Arrays.stream(account).sum()).max().orElse(0);
 
         int max = 0;
         for (int[] account : accounts) {
