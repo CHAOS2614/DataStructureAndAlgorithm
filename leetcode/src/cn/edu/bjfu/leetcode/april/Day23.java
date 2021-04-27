@@ -38,9 +38,27 @@ public class Day23 {
         }
     }
 
+    private int val;
+    private int k;
 
     public int kthLargest(TreeNode root, int k) {
-        return 0;
+        this.k = k;
+        dfs(root);
+        return val;
+    }
+
+    void dfs(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.right);
+        if (k == 0) {
+            return;
+        }
+        if (--k == 0) {
+            val = root.val;
+        }
+        dfs(root.left);
     }
 
 }
