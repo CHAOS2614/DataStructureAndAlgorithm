@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -96,6 +97,7 @@ class TestThread{
         // System.out.println(bd.divide(bd2));
         System.out.println(bd.divide(bd2, RoundingMode.HALF_UP));
         System.out.println(bd.divide(bd2, 15, RoundingMode.HALF_UP));
+        ArrayList<Object> objects = new ArrayList<>();
     }
 
 
