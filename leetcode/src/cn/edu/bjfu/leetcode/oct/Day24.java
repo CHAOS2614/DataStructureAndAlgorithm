@@ -17,7 +17,7 @@ public class Day24 {
      */
     public int longestValidParentheses(String s) {
 
-        if (s.length() < 2) {
+        if (s == null || s.length() < 2) {
             return 0;
         }
         int[] currentCount = new int[s.length()];
