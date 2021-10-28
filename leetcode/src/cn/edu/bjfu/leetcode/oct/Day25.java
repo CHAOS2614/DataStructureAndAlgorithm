@@ -14,7 +14,7 @@ public class Day25 {
      * 例如， [0,1,2,4,5,6,7] 在下标 3 处经旋转后可能变为[4,5,6,7,0,1,2] 。
      * 给你 旋转后 的数组 nums 和一个整数 target ，如果 nums 中存在这个目标值 target ，则返回它的下标，否则返回-1。
      *
-     *<b>数组有序就想到二分</b>
+     *<b>数组有序就想到二分，旋转后的数组选择一个点之后能保证其中一侧是有序的，在有序侧判断target是否在此区间</b>
      */
     public int search(int[] nums, int target) {
 
@@ -28,7 +28,8 @@ public class Day25 {
             if (nums[mid] == target) {
                 return mid;
             }
-            if (nums[left] < nums[mid]) {
+            // 左侧有序
+            if (nums[0] <= nums[mid]) {
                 if (nums[left] <= target && nums[mid] > target) {
                     right = mid - 1;
                 } else {
