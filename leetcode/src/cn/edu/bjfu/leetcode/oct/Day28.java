@@ -49,4 +49,15 @@ public class Day28 {
         }
     }
 
+
+    public static void main(String[] args) {
+        long l = 4L, i = l >> 2;
+        System.out.println(i);
+
+        int a = 6;
+        System.out.println(a);
+        System.out.println(a++);
+        System.out.println(a);
+    }
+
 }
