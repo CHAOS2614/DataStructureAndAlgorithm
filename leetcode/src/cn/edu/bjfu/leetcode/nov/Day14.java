@@ -9,6 +9,7 @@ import java.util.Map;
  * @date 2021-11-14 13:16
  */
 public class Day14 {
+
     public int maxSubArray(int[] nums) {
 
         int ans = nums[0];
@@ -32,9 +33,28 @@ public class Day14 {
         return ans;
     }
 
+    public int maxSubArray2(int[] nums) {
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int res = dp[0];
+
+        /*
+         * dp[i]表示到以i结尾的最大子序列和，不要纠结如果i为负，以nums[i]结尾可定包括i，就是比较dp[i-1] + nums[i] 和 nums[i]的到校
+         */
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            res = Math.max(dp[i], res);
+        }
+        for (int i : dp) {
+            System.out.println(i);
+        }
+        return res;
+    }
+
+
     @Test
     public void maxSubArrayTest() {
-        System.out.println(maxSubArray(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
+        System.out.println(maxSubArray2(new int[]{1, 2, -1, -2, 2, 1, -2, 1, 4, -5, 4}));
     }
 
 
