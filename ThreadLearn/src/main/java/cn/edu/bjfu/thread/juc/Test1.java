@@ -1,4 +1,4 @@
-package juc;
+package cn.edu.bjfu.thread.juc;
 
 /**
  * @author chaos
