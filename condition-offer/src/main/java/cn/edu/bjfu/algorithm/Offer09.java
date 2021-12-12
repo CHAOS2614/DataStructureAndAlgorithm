@@ -7,7 +7,7 @@ import java.util.Deque;
  * @author chaos
  * @date 2021-12-11 11:03
  */
-public class Num09 {
+public class Offer09 {
 }
 
 class CQueue {
