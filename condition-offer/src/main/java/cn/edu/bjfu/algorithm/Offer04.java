@@ -34,5 +34,4 @@ public class Offer04 {
         return false;
     }
 
-
 }
