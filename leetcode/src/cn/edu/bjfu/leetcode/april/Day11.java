@@ -38,7 +38,8 @@ public class Day11 {
 
 
     /**
-     * <a href="https://leetcode-cn.com/problems/create-target-array-in-the-given-order/">给你两个整数数组 nums 和 index。你需要按照以下规则创建目标数组：
+     * <a href="https://leetcode-cn.com/problems/create-target-array-in-the-given-order/">
+     * 给你两个整数数组 nums 和 index。你需要按照以下规则创建目标数组：
      * 目标数组 target 最初为空。
      * 按从左到右的顺序依次读取 nums[i] 和 index[i]，在 target 数组中的下标 index[i] 处插入值 nums[i] 。
      * 重复上一步，直到在 nums 和 index 中都没有要读取的元素。
@@ -108,8 +109,8 @@ public class Day11 {
 
     /**
      * <a href="https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/">
-     * 给你一个数组 nums，对于其中每个元素 nums[i]，请你统计数组中比它小的所有数字的数目。
-     * 换而言之，对于每个 nums[i] 你必须计算出有效的 j 的数量，其中 j 满足 j != i 且 nums[j] < nums[i] 。
+     * 给你一个数组nums，对于其中每个元素nums[i]，请你统计数组中比它小的所有数字的数目。
+     * 换而言之，对于每个nums[i]你必须计算出有效的j的数量，其中 j 满足j != i 且 nums[j] < nums[i]。
      * 以数组形式返回答案。</a>
      */
     @Test
@@ -157,7 +158,7 @@ public class Day11 {
     @Test
     public void countConsistentStringsTest() {
         String allowed = "abc";
-        String[] words = {"a","b","c","ab","ac","bc","abc"};
+        String[] words = {"a", "b", "c", "ab", "ac", "bc", "abc"};
         System.out.println(countConsistentStrings(allowed, words));
     }
 
@@ -187,9 +188,9 @@ public class Day11 {
     /**
      * 如果字符串满足以下条件之一，则可以称之为 有效括号字符串（valid parentheses string，可以简写为 VPS）：
      * 字符串是一个空字符串 ""，或者是一个不为 "(" 或 ")" 的单字符。
-     * 字符串可以写为 AB（A 与 B 字符串连接），其中 A 和 B 都是 有效括号字符串 。
+     * 字符串可以写为 AB（A 与 B字符串连接），其中 A 和 B 都是 有效括号字符串 。
      * 字符串可以写为 (A)，其中 A 是一个 有效括号字符串 。
-     * 类似地，可以定义任何有效括号字符串 S 的 嵌套深度 depth(S)：
+     * 类似地，可以定义任何有效括号字符串S 的 嵌套深度 depth(S)：
      * depth("") = 0
      * depth(C) = 0，其中 C 是单个字符的字符串，且该字符不是 "(" 或者 ")"
      * depth(A + B) = max(depth(A), depth(B))，其中 A 和 B 都是 有效括号字符串
@@ -198,7 +199,7 @@ public class Day11 {
      * 给你一个 有效括号字符串 s，返回该字符串的 s 嵌套深度 。
      */
     @Test
-    public void maxDepthTest(){
+    public void maxDepthTest() {
         System.out.println(maxDepth("(1)+((2))+(((3)))"));
     }
 

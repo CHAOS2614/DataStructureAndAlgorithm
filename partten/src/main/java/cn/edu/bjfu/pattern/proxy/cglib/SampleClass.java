@@ -5,6 +5,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.*;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author chaos
@@ -12,11 +19,22 @@ import java.lang.reflect.Method;
  */
 public class SampleClass {
 
+
+    Lock lock = new ReentrantLock();
+    Condition condition1 = lock.newCondition();
+    Condition condition2 = lock.newCondition();
+    Condition condition3 = lock.newCondition();
+
+    ThreadFactory threadFactory;
+
     public void sayHello() {
         System.out.println("hello world");
+        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
+        CountDownLatch countDownLatch;
+        ReentrantLock reentrantLock;
     }
 
-    public String test(String input) {
+    public synchronized String test(String input) {
         return "hello world";
     }
 
@@ -54,15 +72,15 @@ public class SampleClass {
     }
 
     @Test
-    public void testInvocationHandler() throws Exception{
+    public void testInvocationHandler() throws Exception {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(SampleClass.class);
         enhancer.setCallback(new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                if(method.getDeclaringClass() != Object.class && method.getReturnType() == String.class){
+                if (method.getDeclaringClass() != Object.class && method.getReturnType() == String.class) {
                     return "hello cglib";
-                }else{
+                } else {
                     throw new RuntimeException("Do not know what to do");
                 }
             }
