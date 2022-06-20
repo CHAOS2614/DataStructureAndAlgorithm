@@ -1,5 +1,8 @@
 package cn.edu.bjfu.thread.practice;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author chaos
  * @date 2021-12-06 23:27
@@ -17,9 +20,13 @@ public class test1 {
 
 class MyResources {
 
+    ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
+
     boolean isNumber = true;
 
     public synchronized void printNumber() {
+        Map<String,String> map = new HashMap<>(16);
+        map.isEmpty();
         for (int i = 0; i < 26; ) {
             while (!isNumber) {
                 try {
