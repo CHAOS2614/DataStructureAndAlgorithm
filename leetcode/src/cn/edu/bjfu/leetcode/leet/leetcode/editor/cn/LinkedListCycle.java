@@ -28,7 +28,8 @@ public class LinkedListCycle {
                 p.val = Integer.MAX_VALUE;
                 p = p.next;
             }
-            return false;*/if (head == null || head.next == null) {
+            return false;*/
+            if (head == null || head.next == null) {
                 return false;
             }
             ListNode slow = head;

@@ -1,5 +1,7 @@
 package cn.edu.bjfu.test;
 
+import java.util.Scanner;
+
 /**
  * @author chaos
  * @date 2021-12-09 11:15
@@ -12,6 +14,24 @@ public class Father {
     public static class Person {
 
         public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            String s = scanner.nextLine();
+            char[] chars = s.toCharArray();
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < chars.length; ) {
+                int count = 1;
+                while (++i < chars.length && chars[i] == chars[i - 1]) {
+                    count++;
+                }
+                if (count == 1) {
+                    stringBuilder.append(chars[i - 1]);
+                } else {
+                    stringBuilder.append(chars[i - 1]).append(count);
+                }
+            }
+            System.out.println(stringBuilder);
+
+
             Father father = new Father();
             Person person = new Person();
             person.test1(father);
