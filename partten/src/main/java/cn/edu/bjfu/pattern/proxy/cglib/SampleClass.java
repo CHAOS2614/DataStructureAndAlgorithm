@@ -5,13 +5,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author chaos
@@ -19,22 +20,14 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class SampleClass {
 
-
-    Lock lock = new ReentrantLock();
-    Condition condition1 = lock.newCondition();
-    Condition condition2 = lock.newCondition();
-    Condition condition3 = lock.newCondition();
-
-    ThreadFactory threadFactory;
-
     public void sayHello() {
         System.out.println("hello world");
-        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
-        CountDownLatch countDownLatch;
-        ReentrantLock reentrantLock;
+        List<Integer> list = new ArrayList<>();
+        Map<Integer, Integer> collect = list.stream().collect(Collectors.toMap(Integer::valueOf, Function.identity()));
     }
 
-    public synchronized String test(String input) {
+    public String test(String input) {
+        System.out.println("invoke input ...");
         return "hello world";
     }
 
@@ -49,6 +42,7 @@ public class SampleClass {
         });
         SampleClass sample = (SampleClass) enhancer.create();
         sample.sayHello();
+
     }
 
     @Test

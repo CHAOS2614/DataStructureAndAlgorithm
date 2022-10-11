@@ -1,5 +1,10 @@
 package cn.edu.bjfu.leetcode.leet.leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Chaos
  * @date 2022-07-18 09:37:42
@@ -24,12 +29,13 @@ public class LowestCommonAncestorOfABinaryTree {
     class Solution {
 
         private TreeNode ans;
+        private Map<TreeNode, TreeNode> parents = new HashMap<>();
 
         public Solution() {
             this.ans = null;
         }
 
-        // 很想后序遍历
+        // 很像后序遍历
         private boolean dfs(TreeNode root, TreeNode p, TreeNode q) {
             if (root == null) {
                 return false;
@@ -49,9 +55,36 @@ public class LowestCommonAncestorOfABinaryTree {
             return l || r || (root.val == p.val || root.val == q.val);
         }
 
+        private void dfsParent(TreeNode parent) {
+            if (parent.left != null) {
+                parents.put(parent.left, parent);
+                dfsParent(parent.left);
+            }
+            if (parent.right != null) {
+                parents.put(parent.right, parent);
+                dfsParent(parent.right);
+            }
+        }
+
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-            this.dfs(root, p, q);
-            return this.ans;
+            /*this.dfs(root, p, q);
+            return this.ans;*/
+            if (root == null) {
+                return null;
+            }
+            dfsParent(root);
+            Set<TreeNode> visited = new HashSet<>();
+            while (p != null){
+                visited.add(p);
+                p = parents.get(p);
+            }
+            while (q != null){
+                if(visited.contains(q)){
+                    return q;
+                }
+                q = parents.get(q);
+            }
+            return null;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
